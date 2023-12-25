@@ -37,11 +37,13 @@ class _FormSectionSignInState extends State<FormSectionSignIn> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 30.0),
                 child: CostomTextFormField(
-                    controller: emailController,
-                    hintText: AppStrings.emailHintText,
-                    prefixIcon: Icons.email,
-                    obsecureType: false,
-                    isObsecureText: false),
+                  controller: emailController,
+                  hintText: AppStrings.emailHintText,
+                  prefixIcon: Icons.email,
+                  obsecureType: false,
+                  isObsecureText: false,
+                  inputType: TextInputType.emailAddress,
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 30.0),
@@ -50,7 +52,8 @@ class _FormSectionSignInState extends State<FormSectionSignIn> {
                     hintText: AppStrings.password,
                     prefixIcon: Icons.lock,
                     obsecureType: true,
-                    isObsecureText: true),
+                    isObsecureText: true,
+                    inputType: TextInputType.visiblePassword),
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 30.0),

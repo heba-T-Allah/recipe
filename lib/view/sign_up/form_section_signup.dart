@@ -42,7 +42,8 @@ class _FormSectionSignUpState extends State<FormSectionSignUp> {
                     hintText: AppStrings.emailHintText,
                     prefixIcon: Icons.person,
                     obsecureType: false,
-                    isObsecureText: false),
+                    isObsecureText: false,
+                    inputType: TextInputType.text),
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 30.0),
@@ -51,7 +52,8 @@ class _FormSectionSignUpState extends State<FormSectionSignUp> {
                     hintText: AppStrings.fullNameHintText,
                     prefixIcon: Icons.email,
                     obsecureType: false,
-                    isObsecureText: false),
+                    isObsecureText: false,
+                    inputType: TextInputType.emailAddress),
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 30.0),
@@ -60,9 +62,9 @@ class _FormSectionSignUpState extends State<FormSectionSignUp> {
                     hintText: AppStrings.password,
                     prefixIcon: Icons.lock,
                     obsecureType: true,
-                    isObsecureText: true),
+                    isObsecureText: true,
+                    inputType: TextInputType.visiblePassword),
               ),
-
               const SizedBox(
                 height: 40,
               ),

@@ -13,7 +13,6 @@ class SignInScreen extends StatefulWidget {
 }
 
 class _SignInScreenState extends State<SignInScreen> {
-
   bool obsecureText = true;
 
   bool isObsecureText = true;
@@ -60,9 +59,10 @@ class _SignInScreenState extends State<SignInScreen> {
                         style: TextStyles.textStyleBold22White
                             .copyWith(height: 1.5),
                       ),
-                      SizedBox(height: 40,),
-                       const FormSectionSignIn(),
-
+                      SizedBox(
+                        height: 40,
+                      ),
+                      const FormSectionSignIn(),
                     ])),
           ],
         ),
