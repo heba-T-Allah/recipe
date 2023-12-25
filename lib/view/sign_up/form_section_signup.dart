@@ -77,7 +77,7 @@ class _FormSectionSignUpState extends State<FormSectionSignUp> {
                     }
                   }),
               const SizedBox(
-                height: 150,
+                height: 80,
               ),
               Padding(
                 padding: const EdgeInsets.only(bottom: 20),

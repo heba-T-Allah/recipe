@@ -3,7 +3,6 @@ import 'package:registration/view/sign_in/form_section_signin.dart';
 import '../../resources/assets_manager.dart';
 import '../../resources/strings_manager.dart';
 import '../../resources/text_style.dart';
-import '../../resources/values_manager.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});
@@ -40,27 +39,22 @@ class _SignInScreenState extends State<SignInScreen> {
                   image: AssetImage(ImageAssets.background),
                   fit: BoxFit.fill,
                 )),
-                child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
+                child: ListView(
                     children: [
-                      const SizedBox(height: 100),
-                      Container(
-                          width: 100,
-                          height: 100,
-                          child: Image.asset(
-                            "assets/images/logo2.png",
-                            fit: BoxFit.fill,
-                          )),
-                      const SizedBox(
-                        height: AppSize.s20,
+                      Image.asset(
+                        ImageAssets.logo,
+                        scale: 3,
                       ),
-                      Text(
-                        AppStrings.signIn,
-                        style: TextStyles.textStyleBold22White
-                            .copyWith(height: 1.5),
+
+                      Center(
+                        child: Text(
+                          AppStrings.signIn,
+                          style: TextStyles.textStyleBold22White
+                              .copyWith(height: 1.5),
+                        ),
                       ),
                       SizedBox(
-                        height: 40,
+                        height:20,
                       ),
                       const FormSectionSignIn(),
                     ])),

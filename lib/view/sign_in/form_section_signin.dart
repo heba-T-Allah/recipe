@@ -69,7 +69,7 @@ class _FormSectionSignInState extends State<FormSectionSignIn> {
                 ),
               ),
               const SizedBox(
-                height: 40,
+                height: 20,
               ),
               TextButtonWidget(
                   buttonText: AppStrings.signIn,
@@ -80,7 +80,7 @@ class _FormSectionSignInState extends State<FormSectionSignIn> {
                     }
                   }),
               const SizedBox(
-                height: 150,
+                height: 80,
               ),
               Padding(
                 padding: const EdgeInsets.only(bottom: 20),
