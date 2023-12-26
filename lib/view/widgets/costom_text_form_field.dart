@@ -1,18 +1,18 @@
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:registration/resources/color_manager.dart';
 import 'package:registration/resources/text_style.dart';
-
-import '../../resources/font_manager.dart';
 import '../../resources/strings_manager.dart';
 
 class CostomTextFormField extends StatefulWidget {
-  CostomTextFormField({super.key,
-    required this.controller,
-    required this.hintText,
-    required this.prefixIcon,
-    required this.obsecureType,
-    required this.isObsecureText,
-    required this.inputType});
+  CostomTextFormField(
+      {super.key,
+      required this.controller,
+      required this.hintText,
+      required this.prefixIcon,
+      required this.obsecureType,
+      required this.isObsecureText,
+      required this.inputType});
 
   final TextEditingController controller;
   final String hintText;
@@ -49,14 +49,15 @@ class _CostomTextFormFieldState extends State<CostomTextFormField> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+        autovalidateMode: AutovalidateMode.always,
         style: TextStyles.textStyleRegular16Grey,
-        keyboardType:widget.inputType,
+        keyboardType: widget.inputType,
         controller: widget.controller,
-        obscureText: widget.isObsecureText ?? false,
+        obscureText: widget.isObsecureText,
         decoration: InputDecoration(
             isDense: true,
             contentPadding:
-            const EdgeInsets.symmetric(horizontal: 20, vertical: 18),
+                const EdgeInsets.symmetric(horizontal: 20, vertical: 18),
             label: Text(
               widget.hintText,
               style: TextStyles.textStyleRegular14Grey,
@@ -73,16 +74,30 @@ class _CostomTextFormFieldState extends State<CostomTextFormField> {
             ),
             suffixIcon: widget.obsecureType
                 ? InkWell(
-              onTap: () => toggleObsecure(),
-              child: Icon(
-                widget.isObsecureText ? Icons.visibility_off : Icons.visibility,
-                color: ColorManager.greyText,
-              )
-              ,
-            ) : null),
+                    onTap: () => toggleObsecure(),
+                    child: Icon(
+                      widget.isObsecureText
+                          ? Icons.visibility_off
+                          : Icons.visibility,
+                      color: ColorManager.greyText,
+                    ),
+                  )
+                : null),
         validator: (value) {
           if (value == null || value.isEmpty) {
             return _errorMsg(widget.hintText);
+          }
+          if (widget.hintText == AppStrings.emailHintText) {
+            if (!EmailValidator.validate(value)) {
+              return AppStrings.notValidEmail;
+            }
+            return null;
+          }
+          if (widget.hintText == AppStrings.password) {
+            if (value.length < 6) {
+              return AppStrings.passwordTooShort;
+            }
+
           }
         });
   }

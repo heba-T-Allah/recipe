@@ -26,39 +26,46 @@ class _SignInScreenState extends State<SignInScreen> {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
 
-    return Scaffold(
-      backgroundColor: Colors.transparent,
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Container(
-                height: height,
-                width: width,
-                decoration: const BoxDecoration(
-                    image: DecorationImage(
-                  image: AssetImage(ImageAssets.background),
-                  fit: BoxFit.fill,
-                )),
-                child: ListView(
-                    children: [
-                      Image.asset(
-                        ImageAssets.logo,
-                        scale: 3,
-                      ),
-
-                      Center(
-                        child: Text(
-                          AppStrings.signIn,
-                          style: TextStyles.textStyleBold22White
-                              .copyWith(height: 1.5),
+    return GestureDetector(
+      onTap: () {
+        FocusScopeNode currentFocus = FocusScope.of(context);
+        currentFocus.unfocus();
+        print("tapped");
+      },
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              Container(
+                  height: height,
+                  width: width,
+                  decoration: const BoxDecoration(
+                      image: DecorationImage(
+                    image: AssetImage(ImageAssets.background),
+                    fit: BoxFit.fill,
+                  )),
+                  child: ListView(
+                      children: [
+                        Image.asset(
+                          ImageAssets.logo,
+                          scale: 3,
                         ),
-                      ),
-                      SizedBox(
-                        height:20,
-                      ),
-                      const FormSectionSignIn(),
-                    ])),
-          ],
+
+                        Center(
+                          child: Text(
+                            AppStrings.signIn,
+                            style: TextStyles.textStyleBold22White
+                                .copyWith(height: 1.5),
+                          ),
+                        ),
+                        SizedBox(
+                          height:20,
+                        ),
+                        const FormSectionSignIn(),
+                      ])),
+            ],
+          ),
         ),
       ),
     );

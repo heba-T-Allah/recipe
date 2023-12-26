@@ -21,6 +21,10 @@ class AppStrings {
   static const userNamePref = "userName";
   static const emailPref = "email";
   static const passwordPref = "password";
+  static const notValidEmail = "Not Valid Email";
+  static const passwordTooShort = "Password is too short";
+
+
 
 
 

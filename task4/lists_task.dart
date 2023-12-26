@@ -1,6 +1,6 @@
 main() {
   ////1
-  // printNumbersLessThan5();
+  printNumbersLessThan5();
   //
   // //----------------------------------
   //
@@ -30,13 +30,14 @@ main() {
 
 void printNumbersLessThan5() {
   List<int> a = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-  List x=[];
-  for (int i in a) {
-    if (i < 5) {
-     x.add(i);
-    }
-  }
-  print("the numbers that are less than 5 are : $x");
+  // List x=[];
+  // for (int i in a) {
+  //   if (i < 5) {
+  //    x.add(i);
+  //   }
+  // }
+  a.removeWhere((element) => element>=5);
+  print("the numbers that are less than 5 are : $a");
 }
 
 List getCommonElements() {
