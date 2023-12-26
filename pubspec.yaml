@@ -40,7 +40,7 @@ dependencies:
   flutter_svg: ^2.0.9
   email_validator: '^2.1.16'
   carousel_slider: ^4.2.1
-  dots_indicator: ^2.1.1
+  dots_indicator: ^3.0.0
 
 dev_dependencies:
   flutter_test:

@@ -47,8 +47,9 @@ class _HomeScreenState extends State<HomeScreen> {
               items: imgList
                   .map((e) => Container(
                         // margin: EdgeInsets.symmetric(horizontal: 12),
-                        child:
-                            Center(child: Image.network(e, fit: BoxFit.cover,width: 1000.0)),
+                        child: Center(
+                            child: Image.network(e,
+                                fit: BoxFit.cover, width: 1000.0)),
                       ))
                   .toList(),
               carouselController: buttonCarouselController,
@@ -88,7 +89,6 @@ class _HomeScreenState extends State<HomeScreen> {
                         buttonCarouselController.nextPage(
                             duration: Duration(milliseconds: 300),
                             curve: Curves.easeInCubic);
-
                       }),
                 )),
             Positioned(
@@ -108,7 +108,6 @@ class _HomeScreenState extends State<HomeScreen> {
                         buttonCarouselController.previousPage(
                             duration: Duration(milliseconds: 300),
                             curve: Curves.easeInCubic);
-
                       })),
             ),
             Positioned(
@@ -116,11 +115,14 @@ class _HomeScreenState extends State<HomeScreen> {
               right: 40,
               left: 40,
               child: DotsIndicator(
-                onTap: (position) {
-                  setState(() => currentPos = position as int);
+                onTap: (position) async {
+                  setState(() => currentPos = position);
+
+                  await buttonCarouselController.animateToPage(currentPos);
+
                 },
                 dotsCount: imgList.length,
-                position: currentPos + 0.0,
+                position: currentPos,
                 decorator: DotsDecorator(
                   color: Colors.black87, // Inactive color
                   activeColor: Colors.redAccent,
