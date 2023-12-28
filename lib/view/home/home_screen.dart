@@ -85,8 +85,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         color: Colors.black,
                         size: 50,
                       ),
-                      onPressed: () {
-                        buttonCarouselController.nextPage(
+                      onPressed: () async{
+                     await   buttonCarouselController.nextPage(
                             duration: Duration(milliseconds: 300),
                             curve: Curves.easeInCubic);
                       }),
@@ -104,8 +104,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         color: Colors.black,
                         size: 50,
                       ),
-                      onPressed: () {
-                        buttonCarouselController.previousPage(
+                      onPressed: () async{
+                      await  buttonCarouselController.previousPage(
                             duration: Duration(milliseconds: 300),
                             curve: Curves.easeInCubic);
                       })),

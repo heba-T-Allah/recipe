@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../../resources/assets_manager.dart';
-import '../../../resources/strings_manager.dart';
 import '../../../resources/text_style.dart';
 import '../../../resources/values_manager.dart';
 
@@ -26,7 +25,7 @@ class SplashLogoAndTitle extends StatelessWidget {
         decoration: const BoxDecoration(
             image: DecorationImage(
           image: AssetImage(ImageAssets.background),
-          fit: BoxFit.fill,
+          fit: BoxFit.cover,
         )),
         child: Column(
           mainAxisAlignment: mainAxisAlignment,

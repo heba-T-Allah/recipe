@@ -103,4 +103,12 @@ class _FormSectionSignUpState extends State<FormSectionSignUp> {
           ),
         ));
   }
+
+  @override
+  void dispose() {
+    passwordController.dispose();
+    emailController.dispose();
+    fullNameController.dispose();
+    super.dispose();
+  }
 }
