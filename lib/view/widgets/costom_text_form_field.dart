@@ -97,7 +97,6 @@ class _CostomTextFormFieldState extends State<CostomTextFormField> {
             if (value.length < 6) {
               return AppStrings.passwordTooShort;
             }
-
           }
         });
   }

@@ -1,0 +1,25 @@
+{
+  "ads": [
+    {
+      "title": "French Toast with Berries",
+      "image": "assets/images/frenshtoast.png"
+    },
+    {
+      "title": "Brown Sugar Cinnamon Toast",
+      "image": "assets/images/cinnamon_toast.png"
+    },
+    {
+      "title": "Blueberry Muffins",
+      "image": "assets/images/blueberry_muffins.png"
+    },
+    {
+      "title": "Glazed salmon",
+      "image": "assets/images/glazed_salmon.png"
+    },
+    {
+      "title": "Asian Chicken Glazed Thighs",
+      "image": "assets/images/chicken_thighs.png"
+    }
+  ],
+  "recipe": []
+}

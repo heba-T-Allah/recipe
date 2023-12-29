@@ -24,8 +24,11 @@ class AppStrings {
   static const notValidEmail = "Not Valid Email";
   static const passwordTooShort = "Password is too short";
 
-
-
+  ////home page
+  static const whatWouldYouLikeToCook ="What Would you Like to Cook \n Today?";
+  static const search ="Search";
+  static const todayFresh = "Today\'s Fresh Recipes";
+  static const seeAll ="See All";
 
 
 }

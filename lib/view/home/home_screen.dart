@@ -1,7 +1,15 @@
+import 'dart:convert';
+
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:registration/resources/constants_manager.dart';
+import 'package:registration/view/home/widgets/cards_title.dart';
+import 'package:registration/view/home/widgets/search_and_filter.dart';
 
+import '../../model/recipe_ad.dart';
+import '../../resources/assets_manager.dart';
 import '../../resources/strings_manager.dart';
 import '../../resources/text_style.dart';
 import '../costom/shared_functions.dart';
@@ -15,19 +23,24 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   late CarouselController buttonCarouselController;
-  final List<String> imgList = [
-    'https://images.unsplash.com/photo-1520342868574-5fa3804e551c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6ff92caffcdd63681a35134a6770ed3b&auto=format&fit=crop&w=1951&q=80',
-    'https://images.unsplash.com/photo-1522205408450-add114ad53fe?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=368f45b0888aeb0b7b08e3a1084d3ede&auto=format&fit=crop&w=1950&q=80',
-    'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=94a1e718d89ca60a6337a6008341ca50&auto=format&fit=crop&w=1950&q=80',
-    'https://images.unsplash.com/photo-1523205771623-e0faa4d2813d?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=89719a0d55dd05e2deae4120227e6efc&auto=format&fit=crop&w=1953&q=80',
-    'https://images.unsplash.com/photo-1508704019882-f9cf40e475b4?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=8c6e5e3aba713b17aa1fe71ab4f0ae5b&auto=format&fit=crop&w=1352&q=80',
-    'https://images.unsplash.com/photo-1519985176271-adb1088fa94c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=a0c8d632e977f94e5d312d9893258f59&auto=format&fit=crop&w=1355&q=80'
-  ];
+
   var currentPos = 0;
+  List<RecipeAd> adsList = [];
+
+  void getAds() async {
+    var adsData = await rootBundle.loadString('assets/data/sample.json');
+    var dataDecoded =
+    List<Map<String, dynamic>>.from(jsonDecode(adsData)['ads']);
+
+    adsList = dataDecoded.map((e) => RecipeAd.fromJson(e)).toList();
+    print(adsList);
+    setState(() {});
+  }
 
   @override
   void initState() {
     buttonCarouselController = CarouselController();
+    getAds();
     super.initState();
   }
 
@@ -36,115 +49,188 @@ class _HomeScreenState extends State<HomeScreen> {
     final sharedFunctions = SharedFunctions(context: context);
 
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text(AppStrings.homeScreen),
+        backgroundColor: Colors.white,
+        elevation: 0,
+        leading: Padding(
+          padding:
+          EdgeInsets.symmetric(horizontal: AppConstants.horizontalPadding),
+          child: Image.asset(
+            ImageAssets.menuIcon,
+            color: Colors.black,
+          ),
+        ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.symmetric(
+                horizontal: AppConstants.horizontalPadding),
+            child: Image.asset(
+              ImageAssets.notificationsIcon,
+              color: Colors.black,
+              width: 20,
+              height: 20,
+            ),
+          )
+        ],
+      ),
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.symmetric(
+            horizontal: AppConstants.horizontalPadding),
+        child: ElevatedButton(
+          style: ButtonStyle(
+              backgroundColor: MaterialStatePropertyAll(Colors.red)),
+          onPressed: () {
+            sharedFunctions.logoutUser();
+          },
+          child: Text(
+            AppStrings.logOut,
+            style: TextStyles.textStyleRegular16White,
+          ),
+        ),
       ),
       body: Padding(
-        padding: const EdgeInsets.only(top: 8.0),
-        child: Stack(
-          children: [
-            CarouselSlider(
-              items: imgList
-                  .map((e) => Container(
-                        // margin: EdgeInsets.symmetric(horizontal: 12),
-                        child: Center(
-                            child: Image.network(e,
-                                fit: BoxFit.cover, width: 1000.0)),
-                      ))
-                  .toList(),
-              carouselController: buttonCarouselController,
-              options: CarouselOptions(
-                height: MediaQuery.of(context).size.height * .3,
-                autoPlay: false,
-                enlargeCenterPage: true,
-                enlargeFactor: 0.8,
-                enableInfiniteScroll: false,
-                viewportFraction: 0.75,
-                initialPage: currentPos,
-                aspectRatio: 2,
-                enlargeStrategy: CenterPageEnlargeStrategy.height,
-                onPageChanged: (index, _) {
-                  currentPos = index;
-
-                  setState(() {});
-                },
-                autoPlayAnimationDuration: Duration(milliseconds: 500),
-                autoPlayCurve: Curves.easeInCubic,
-              ),
-            ),
-            Positioned(
-                top: 80,
-                right: 4,
-                child: Container(
-                  // color: Colors.grey,
-                  // height: 60,
-                  // width: 60,
-                  child: IconButton(
-                      icon: Icon(
-                        Icons.arrow_forward_ios,
-                        color: Colors.black,
-                        size: 50,
-                      ),
-                      onPressed: () async{
-                     await   buttonCarouselController.nextPage(
-                            duration: Duration(milliseconds: 300),
-                            curve: Curves.easeInCubic);
-                      }),
-                )),
-            Positioned(
-              top: 80,
-              left: 4,
-              child: Container(
-                  // color: Colors.grey,
-                  // height: 60,
-                  // width: 60,
-                  child: IconButton(
-                      icon: Icon(
-                        Icons.arrow_back_ios,
-                        color: Colors.black,
-                        size: 50,
-                      ),
-                      onPressed: () async{
-                      await  buttonCarouselController.previousPage(
-                            duration: Duration(milliseconds: 300),
-                            curve: Curves.easeInCubic);
-                      })),
-            ),
-            Positioned(
-              top: 220,
-              right: 40,
-              left: 40,
-              child: DotsIndicator(
-                onTap: (position) async {
-                  setState(() => currentPos = position);
-
-                  await buttonCarouselController.animateToPage(currentPos);
-
-                },
-                dotsCount: imgList.length,
-                position: currentPos,
-                decorator: DotsDecorator(
-                  color: Colors.black87, // Inactive color
-                  activeColor: Colors.redAccent,
+        padding: const EdgeInsets.only(top: 8.0, left: 20, right: 20),
+        child: SingleChildScrollView(
+          child: adsList.isEmpty
+              ? Center(child: const CircularProgressIndicator())
+              : Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                height: 20,
+                child: Text(
+                  "Bonjour Emma",
+                  style: TextStyles.textStyleRegular13Grey,
                 ),
               ),
-            ),
-            SizedBox(height: 200),
-            Positioned(
-              child: Center(
-                child: MaterialButton(
-                  onPressed: () {
-                    sharedFunctions.logoutUser();
+              SizedBox(
+                height: 10,
+              ),
+              Text(
+                AppStrings.whatWouldYouLikeToCook,
+                style: TextStyles.textStyleAbrilRegular20Black
+                    .copyWith(height: 1.5),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              SearchAndFilter(),
+              SizedBox(
+                height: 10,
+              ),
+              Stack(
+                children: [
+                  CarouselSlider(
+                    items: adsList
+                        .map((recipeAd) =>
+                        Container(
+                          margin: EdgeInsets.symmetric(horizontal: 4),
+                          child: Stack(
+                            children: [
+                              Center(
+                                  child: Image.asset(
+                                    recipeAd.image!,
+                                  )),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                      color: Colors.black38,
+                                      borderRadius:
+                                      BorderRadius.circular(25)),
+                                  child: Padding(
+                                    padding:
+                                    const EdgeInsets.all(8.0),
+                                    child: Text(
+                                      recipeAd.title.toString(),
+                                      style: const TextStyle(
+                                          fontSize: 16.0,
+                                          color: Colors.white),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ))
+                        .toList(),
+                    carouselController: buttonCarouselController,
+                    options: CarouselOptions(
+                      height: MediaQuery
+                          .of(context)
+                          .size
+                          .height * .3,
+                      autoPlay: true,
+                      enlargeCenterPage: true,
+                      enlargeFactor: 0.3,
+                      enableInfiniteScroll: true,
+                      viewportFraction: 0.8,
+                      initialPage: currentPos,
+                      aspectRatio: 2,
+                      enlargeStrategy: CenterPageEnlargeStrategy.height,
+                      onPageChanged: (index, _) {
+                        currentPos = index;
+
+                        setState(() {});
+                      },
+                      autoPlayAnimationDuration:
+                      Duration(milliseconds: 500),
+                      autoPlayCurve: Curves.easeInCubic,
+                    ),
+                  ),
+                  Positioned(
+                      top: 80,
+                      right: 4,
+                      child: IconButton(
+                          icon: Icon(
+                            Icons.arrow_forward_ios,
+                            color: Colors.black,
+                            size: 50,
+                          ),
+                          onPressed: () async {
+                            await buttonCarouselController.nextPage(
+                                duration: Duration(milliseconds: 300),
+                                curve: Curves.easeInCubic);
+                          })),
+                  Positioned(
+                    top: 80,
+                    left: 4,
+                    child: IconButton(
+                        icon: Icon(
+                          Icons.arrow_back_ios,
+                          color: Colors.black,
+                          size: 50,
+                        ),
+                        onPressed: () async {
+                          await buttonCarouselController.previousPage(
+                              duration: Duration(milliseconds: 300),
+                              curve: Curves.easeInCubic);
+                        }),
+                  ),
+                ],
+              ),
+              SizedBox(height: 15),
+              Center(
+                child: DotsIndicator(
+                  onTap: (position) async {
+                    setState(() => currentPos = position);
+
+                    await buttonCarouselController
+                        .animateToPage(currentPos);
                   },
-                  color: Colors.red,
-                  child: Text(
-                    AppStrings.logOut,
-                    style: TextStyles.textStyleRegular16White,
+                  dotsCount: adsList.length,
+                  position: currentPos,
+                  decorator: DotsDecorator(
+                    color: Colors.black87, // Inactive color
+                    activeColor: Colors.redAccent,
                   ),
                 ),
               ),
-            ),
-          ],
+              CardsTitle(title: AppStrings.todayFresh),
+            ],
+          ),
         ),
       ),
     );

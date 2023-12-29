@@ -42,7 +42,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   width: width,
                   decoration: const BoxDecoration(
                       image: DecorationImage(
-                    image: AssetImage(ImageAssets.background),
+                    image: AssetImage(ImageAssets.bgMask),
                     fit: BoxFit.cover,
                   )),
                   child: ListView(

@@ -28,7 +28,7 @@ class SignUpScreen extends StatelessWidget {
                   width: width,
                   decoration: const BoxDecoration(
                       image: DecorationImage(
-                    image: AssetImage(ImageAssets.background),
+                    image: AssetImage(ImageAssets.bgMask),
                     fit: BoxFit.cover,
                   )),
                   child: ListView(children: [
