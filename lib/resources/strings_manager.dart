@@ -1,6 +1,6 @@
 class AppStrings {
   static const appTitle = "Recipe App";
-  static const splashTitle="Cooking Done The easy way";
+  static const splashTitle = "Cooking Done The easy way";
   static const signIn = "Sign In";
   static const signUp = "Sign Up";
   static const register = " Register";
@@ -25,10 +25,9 @@ class AppStrings {
   static const passwordTooShort = "Password is too short";
 
   ////home page
-  static const whatWouldYouLikeToCook ="What Would you Like to Cook \n Today?";
-  static const search ="Search";
+  static const whatWouldYouLikeToCook = "What Would you Like to Cook \n Today?";
+  static const search = "Search";
   static const todayFresh = "Today\'s Fresh Recipes";
-  static const seeAll ="See All";
-
-
+  static const seeAll = "See All";
+  static const recommended = "Recommended";
 }

@@ -54,4 +54,24 @@ class TextStyles {
       fontWeight: FontWeightManager.medium,
       fontFamily: FontConstants.fontFamilyHellix,
       color: ColorManager.primaryColor);
+  static TextStyle textStyleMedium10Blue = TextStyle(
+      fontSize: FontSize.s10,
+      fontWeight: FontWeightManager.medium,
+      fontFamily: FontConstants.fontFamilyHellix,
+      color: ColorManager.blue);
+  static TextStyle textStyleMedium14Black = TextStyle(
+      fontSize: FontSize.s14,
+      fontWeight: FontWeightManager.medium,
+      fontFamily: FontConstants.fontFamilyHellix,
+      color: ColorManager.textBlack);
+  static TextStyle textStyleRegular10Orange = TextStyle(
+      fontSize: FontSize.s10,
+      fontWeight: FontWeightManager.regular,
+      fontFamily: FontConstants.fontFamilyHellix,
+      color: ColorManager.primaryColor);
+  static TextStyle textStyleRegular10Grey = TextStyle(
+      fontSize: FontSize.s10,
+      fontWeight: FontWeightManager.regular,
+      fontFamily: FontConstants.fontFamilyHellix,
+      color: ColorManager.greyText);
 }

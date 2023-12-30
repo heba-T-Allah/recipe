@@ -7,6 +7,9 @@ class ImageAssets {
   static const String menuIcon = "$imagePath/menu.png";
   static const String notificationsIcon = "$imagePath/notifications.png";
   static const String filterIcon = "$imagePath/filter.png";
+  static const String timeIcon = "$imagePath/time.png";
+  static const String servingIcon = "$imagePath/serving.png";
+
 
 
 
