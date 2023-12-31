@@ -61,10 +61,11 @@ class _HomeScreenState extends State<HomeScreen> {
         elevation: 0,
         leading: Padding(
           padding: const EdgeInsets.symmetric(
-              horizontal: AppConstants.horizontalPadding),
+              horizontal: 20),
           child: Image.asset(
             ImageAssets.menuIcon,
             color: Colors.black,
+
           ),
         ),
         actions: [
