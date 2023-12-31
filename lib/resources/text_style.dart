@@ -34,6 +34,7 @@ class TextStyles {
       fontWeight: FontWeightManager.regular,
       fontFamily: FontConstants.fontFamilyHellix,
       color: ColorManager.primaryColor);
+
   static TextStyle textStyleRegular13Grey = TextStyle(
       fontSize: FontSize.s13,
       fontWeight: FontWeightManager.regular,

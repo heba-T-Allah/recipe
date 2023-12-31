@@ -15,6 +15,7 @@ import '../../model/recipe_ad.dart';
 import '../../resources/assets_manager.dart';
 import '../../resources/strings_manager.dart';
 import '../../resources/text_style.dart';
+import '../../resources/values_manager.dart';
 import '../costom/shared_functions.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -60,12 +61,10 @@ class _HomeScreenState extends State<HomeScreen> {
         backgroundColor: Colors.white,
         elevation: 0,
         leading: Padding(
-          padding: const EdgeInsets.symmetric(
-              horizontal: 20),
+          padding: const EdgeInsets.symmetric(horizontal: AppSize.s20),
           child: Image.asset(
             ImageAssets.menuIcon,
             color: Colors.black,
-
           ),
         ),
         actions: [
@@ -75,8 +74,8 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Image.asset(
               ImageAssets.notificationsIcon,
               color: Colors.black,
-              width: 20,
-              height: 20,
+              width: AppSize.s20,
+              height: AppSize.s20,
             ),
           )
         ],
@@ -97,7 +96,8 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.only(top: 8.0, left: 20, right: 20),
+        padding: const EdgeInsets.only(
+            top: AppPadding.p8, left: AppPadding.p20, right: AppPadding.p20),
         child: SingleChildScrollView(
           child: adsList.isEmpty
               ? const Center(child: CircularProgressIndicator())
@@ -106,14 +106,14 @@ class _HomeScreenState extends State<HomeScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
-                      height: 20,
+                      height: AppSize.s20,
                       child: Text(
                         "Bonjour Emma",
                         style: TextStyles.textStyleRegular13Grey,
                       ),
                     ),
                     const SizedBox(
-                      height: 10,
+                      height: AppSize.s10,
                     ),
                     Text(
                       AppStrings.whatWouldYouLikeToCook,
@@ -121,11 +121,11 @@ class _HomeScreenState extends State<HomeScreen> {
                           .copyWith(height: 1.5),
                     ),
                     const SizedBox(
-                      height: 10,
+                      height: AppSize.s10,
                     ),
                     const SearchAndFilter(),
                     const SizedBox(
-                      height: 10,
+                      height: AppSize.s10,
                     ),
                     Stack(
                       children: [
@@ -133,7 +133,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           items: adsList
                               .map((recipeAd) => Container(
                                     margin: const EdgeInsets.symmetric(
-                                        horizontal: 4),
+                                        horizontal: AppMargin.m8),
                                     child: Stack(
                                       children: [
                                         Center(
@@ -141,21 +141,21 @@ class _HomeScreenState extends State<HomeScreen> {
                                           recipeAd.image!,
                                         )),
                                         Padding(
-                                          padding: const EdgeInsets.all(8.0),
+                                          padding: const EdgeInsets.all(
+                                              AppPadding.p8),
                                           child: Container(
                                             decoration: BoxDecoration(
                                                 color: Colors.black38,
                                                 borderRadius:
-                                                    BorderRadius.circular(25)),
+                                                    BorderRadius.circular(
+                                                        AppSize.s20)),
                                             child: Padding(
-                                              padding:
-                                                  const EdgeInsets.all(8.0),
+                                              padding: const EdgeInsets.all(
+                                                  AppPadding.p8),
                                               child: Text(
-                                                recipeAd.title.toString(),
-                                                style: const TextStyle(
-                                                    fontSize: 16.0,
-                                                    color: Colors.white),
-                                              ),
+                                                  recipeAd.title.toString(),
+                                                  style: TextStyles
+                                                      .textStyleRegular16White),
                                             ),
                                           ),
                                         ),
@@ -179,8 +179,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
                               setState(() {});
                             },
-                            autoPlayAnimationDuration:
-                                const Duration(milliseconds: 500),
+                            autoPlayAnimationDuration: const Duration(
+                                milliseconds: AppConstants.carouselDuration),
                             autoPlayCurve: Curves.easeInCubic,
                           ),
                         ),
@@ -191,12 +191,13 @@ class _HomeScreenState extends State<HomeScreen> {
                                 icon: const Icon(
                                   Icons.arrow_forward_ios,
                                   color: Colors.black,
-                                  size: 50,
+                                  size: AppSize.s50,
                                 ),
                                 onPressed: () async {
                                   await buttonCarouselController.nextPage(
-                                      duration:
-                                          const Duration(milliseconds: 300),
+                                      duration: const Duration(
+                                          milliseconds:
+                                              AppConstants.carouselDuration),
                                       curve: Curves.easeInCubic);
                                 })),
                         Positioned(
@@ -206,17 +207,19 @@ class _HomeScreenState extends State<HomeScreen> {
                               icon: const Icon(
                                 Icons.arrow_back_ios,
                                 color: Colors.black,
-                                size: 50,
+                                size: AppSize.s50,
                               ),
                               onPressed: () async {
                                 await buttonCarouselController.previousPage(
-                                    duration: const Duration(milliseconds: 300),
+                                    duration: const Duration(
+                                        milliseconds:
+                                            AppConstants.carouselDuration),
                                     curve: Curves.easeInCubic);
                               }),
                         ),
                       ],
                     ),
-                    const SizedBox(height: 15),
+                    const SizedBox(height: AppSize.s15),
                     Center(
                       child: DotsIndicator(
                         onTap: (position) async {
@@ -234,19 +237,19 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ),
                     const SizedBox(
-                      height: 10,
+                      height: AppSize.s10,
                     ),
                     CardsTitle(title: AppStrings.todayFresh),
                     const SizedBox(
-                      height: 20,
+                      height: AppSize.s20,
                     ),
                     RowCards(recipeList: recipeList),
                     const SizedBox(
-                      height: 20,
+                      height: AppSize.s20,
                     ),
                     CardsTitle(title: AppStrings.recommended),
                     const SizedBox(
-                      height: 10,
+                      height: AppSize.s10,
                     ),
                     ColumnCards(recipeList: recipeList),
                   ],
