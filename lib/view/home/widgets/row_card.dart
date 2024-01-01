@@ -60,7 +60,7 @@ class RowCards extends StatelessWidget {
                                 height: AppSize.s10,
                               ),
                               SizedBox(
-                                width: 150,
+                                width: MediaQuery.of(context).size.width ,
                                 child: Text(recipeList[index].title!,
                                     style: TextStyles.textStyleMedium14Black),
                               ),
