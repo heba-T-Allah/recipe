@@ -29,26 +29,26 @@ class RowCards extends StatelessWidget {
             children: [
               Positioned(
                 child: SizedBox(
-                  // height: MediaQuery.of(context).size.height * .4,
                   child: Card(
-                      margin: const EdgeInsets.symmetric(horizontal: AppMargin.m30),
+                      margin: const EdgeInsets.only(right: AppMargin.m60),
                       color: ColorManager.backgroundGreyColor,
                       // elevation: 2,
                       shape: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(AppSize.s30),
                           borderSide: BorderSide.none),
                       child: SizedBox(
-                        width: MediaQuery.of(context).size.width * .6,
+                        width: MediaQuery.of(context).size.width * .55,
+
                         child: Padding(
                           padding: const EdgeInsets.all( AppPadding.p20),
                           child:  Column(
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisSize: MainAxisSize.min,
+                            mainAxisSize: MainAxisSize.max,
                             children: [
                               MyFavIcon(
                                   recipeList: recipeList, index: index),
-                              SizedBox(
+                              const SizedBox(
                                 width: AppSize.s90,
                                 height: AppSize.s90,
                               ),
@@ -56,24 +56,27 @@ class RowCards extends StatelessWidget {
                                 recipeList[index].mealType!,
                                 style: TextStyles.textStyleMedium10Blue,
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: AppSize.s10,
                               ),
-                              Text(recipeList[index].title!,
-                                  style: TextStyles.textStyleMedium14Black),
                               SizedBox(
+                                width: 150,
+                                child: Text(recipeList[index].title!,
+                                    style: TextStyles.textStyleMedium14Black),
+                              ),
+                              const SizedBox(
                                 height: AppSize.s10,
                               ),
                               MyRatingBar(
                                   recipeList: recipeList, index: index),
-                              SizedBox(
+                              const SizedBox(
                                 height: AppSize.s10,
                               ),
                               Text(
                                 "${recipeList[index].calories!} Calories",
                                 style: TextStyles.textStyleRegular10Orange,
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: AppSize.s10,
                               ),
                               PrepTimeAndServing(

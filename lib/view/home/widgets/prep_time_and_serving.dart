@@ -37,7 +37,7 @@ class PrepTimeAndServing extends StatelessWidget {
             )
           ],
         ),
-        SizedBox(width: 50,),
+        SizedBox(width: 40,),
         Row(
           children: [
             Image.asset(
