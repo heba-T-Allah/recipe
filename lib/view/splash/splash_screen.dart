@@ -1,11 +1,13 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:registration/resources/constants_manager.dart';
 import 'package:registration/resources/strings_manager.dart';
 import 'package:registration/resources/text_style.dart';
 import 'package:registration/resources/values_manager.dart';
 import 'package:registration/services/preferences.service.dart';
 import 'package:registration/view/splash/widgets/splash_logo_and_title.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../resources/assets_manager.dart';
 import '../../routing/routes.dart';
 
@@ -34,8 +36,10 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   Future getValidateData() async {
-    isLoggedIn = PreferencesService.retrieveBoolValueIsLoggedIn();
-
+    // isLoggedIn = PreferencesService.retrieveBoolValueIsLoggedIn();
+    isLoggedIn =
+        GetIt.I.get<SharedPreferences>().getBool(AppStrings.isLoggedInPref) ??
+            false;
     print("loggedIn splash $isLoggedIn");
   }
 
@@ -52,11 +56,11 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
         backgroundColor: Colors.transparent,
         body: SingleChildScrollView(
-      child: SplashLogoAndTitle(
-          height: height,
-          width: width,
-          mainAxisAlignment: MainAxisAlignment.center,
-          textTitle: AppStrings.splashTitle),
-    ));
+          child: SplashLogoAndTitle(
+              height: height,
+              width: width,
+              mainAxisAlignment: MainAxisAlignment.center,
+              textTitle: AppStrings.splashTitle),
+        ));
   }
 }

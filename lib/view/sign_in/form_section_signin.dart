@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:registration/resources/strings_manager.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../resources/text_style.dart';
 import '../../routing/routes.dart';
@@ -108,12 +110,12 @@ class _FormSectionSignInState extends State<FormSectionSignIn> {
   }
 
   Future<void> _login(String email, String password) async {
-    PreferencesService.saveStringValue(AppStrings.emailPref, email);
-    PreferencesService.saveStringValue(AppStrings.passwordPref, password);
-    PreferencesService.saveBoolValue(true);
-    print(PreferencesService.retrieveStringValue(AppStrings.emailPref));
-    print(
-        " isloggedin in func ${await PreferencesService.retrieveBoolValueIsLoggedIn()}");
+    GetIt.I.get<SharedPreferences>().setString(AppStrings.emailPref, email);
+    GetIt.I.get<SharedPreferences>().setString(AppStrings.passwordPref, password);
+    GetIt.I.get<SharedPreferences>().setBool(AppStrings.isLoggedInPref,true);
+    // print(PreferencesService.retrieveStringValue(AppStrings.emailPref));
+    // print(
+    //     " isloggedin in func ${await PreferencesService.retrieveBoolValueIsLoggedIn()}");
 
     print("login Successfully.");
     _clearFields();
