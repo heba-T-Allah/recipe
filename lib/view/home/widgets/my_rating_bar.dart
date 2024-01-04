@@ -1,60 +1,34 @@
-
 import 'package:flutter/material.dart';
-
-import '../../../model/recipe.dart';
 import '../../../resources/color_manager.dart';
 
 class MyRatingBar extends StatelessWidget {
-  const MyRatingBar({
-    super.key,
-    required this.recipeList,
-    required this.index
-  });
+  const MyRatingBar({super.key, required this.rate});
 
-  final List<Recipe> recipeList;
-  final int index;
+  final double rate;
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
         Icon(
-          recipeList[index].rating! >= 1
-              ? Icons.star
-              : Icons.star_border,
+          rate >= 1 ? Icons.star : Icons.star_border,
           color: ColorManager.primaryColor,
         ),
         Icon(
-          recipeList[index].rating! >= 2
-              ? Icons.star
-              : Icons.star_border,
-          color: recipeList[index].rating! < 2
-              ? ColorManager.greyText
-              : ColorManager.primaryColor,
+          rate >= 2 ? Icons.star : Icons.star_border,
+          color: rate < 2 ? ColorManager.greyText : ColorManager.primaryColor,
         ),
         Icon(
-          recipeList[index].rating! >= 3
-              ? Icons.star
-              : Icons.star_border,
-          color: recipeList[index].rating! < 3
-              ? ColorManager.greyText
-              : ColorManager.primaryColor,
+          rate >= 3 ? Icons.star : Icons.star_border,
+          color: rate < 3 ? ColorManager.greyText : ColorManager.primaryColor,
         ),
         Icon(
-          recipeList[index].rating! >= 4
-              ? Icons.star
-              : Icons.star_border,
-          color: recipeList[index].rating! < 4
-              ? ColorManager.greyText
-              : ColorManager.primaryColor,
+          rate >= 4 ? Icons.star : Icons.star_border,
+          color: rate < 4 ? ColorManager.greyText : ColorManager.primaryColor,
         ),
         Icon(
-          recipeList[index].rating! == 5
-              ? Icons.star
-              : Icons.star_border,
-          color: recipeList[index].rating! < 5
-              ? ColorManager.greyText
-              : ColorManager.primaryColor,
+          rate == 5 ? Icons.star : Icons.star_border,
+          color: rate < 5 ? ColorManager.greyText : ColorManager.primaryColor,
         ),
         // RatingBar.builder(
         //   initialRating: recipeList[index].rating!,
@@ -70,7 +44,6 @@ class MyRatingBar extends StatelessWidget {
         //     print(rating);
         //   },
         // ),
-
       ],
     );
   }

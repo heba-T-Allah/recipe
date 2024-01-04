@@ -1,26 +1,20 @@
-
-
 import 'package:flutter/material.dart';
-
-import '../../../model/recipe.dart';
 import '../../../resources/color_manager.dart';
 
 class MyFavIcon extends StatelessWidget {
   const MyFavIcon({
     super.key,
-    required this.recipeList,
-    required this.index
+    required this.favourite
   });
 
-  final List<Recipe> recipeList;
-final int index;
+final bool favourite;
   @override
   Widget build(BuildContext context) {
     return Icon(
-      recipeList[index].favorite == true
+     favourite == true
           ? Icons.favorite
           : Icons.favorite_border,
-      color: recipeList[index].favorite == true
+      color: favourite == true
           ? ColorManager.primaryColor
           : ColorManager.greyText,
     );

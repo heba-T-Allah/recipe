@@ -1,7 +1,5 @@
 
 import 'package:flutter/material.dart';
-
-import '../../../model/recipe.dart';
 import '../../../resources/assets_manager.dart';
 import '../../../resources/color_manager.dart';
 import '../../../resources/text_style.dart';
@@ -9,12 +7,12 @@ import '../../../resources/text_style.dart';
 class PrepTimeAndServing extends StatelessWidget {
   const PrepTimeAndServing({
     super.key,
-    required this.recipeList,
-    required this.index
+    required this.serving,
+    required this.prepTime
   });
 
-  final List<Recipe> recipeList;
-  final int index;
+  final int serving ;
+  final int prepTime;
 
 
   @override
@@ -32,7 +30,7 @@ class PrepTimeAndServing extends StatelessWidget {
               color: ColorManager.greyText,
             ),
             Text(
-              "  ${recipeList[index].prepTime! / 60} Min",
+              "  ${prepTime / 60} Min",
               style: TextStyles.textStyleRegular10Grey,
             )
           ],
@@ -47,7 +45,7 @@ class PrepTimeAndServing extends StatelessWidget {
               color: ColorManager.greyText,
             ),
             Text(
-              "  ${recipeList[index].serving!} Serving",
+              "  $serving Serving",
               style: TextStyles.textStyleRegular10Grey,
             )
           ],

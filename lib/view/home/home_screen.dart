@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:registration/resources/constants_manager.dart';
 import 'package:registration/view/home/widgets/cards_title.dart';
-import 'package:registration/view/home/widgets/coulmn_card.dart';
-import 'package:registration/view/home/widgets/row_card.dart';
+import 'package:registration/view/home/widgets/fresh_recipe_list.dart';
+import 'package:registration/view/home/widgets/recommended_recipe_list.dart';
 import 'package:registration/view/home/widgets/search_and_filter.dart';
 
 import '../../model/recipe.dart';
@@ -20,7 +20,6 @@ import '../costom/shared_functions.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
-
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
@@ -243,7 +242,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     const SizedBox(
                       height: AppSize.s20,
                     ),
-                    RowCards(recipeList: recipeList),
+                    RecommendedRecipeList(recipeList: recipeList),
                     const SizedBox(
                       height: AppSize.s20,
                     ),
@@ -251,7 +250,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     const SizedBox(
                       height: AppSize.s10,
                     ),
-                    ColumnCards(recipeList: recipeList),
+                    FreshRecipeList(recipeList: recipeList),
                   ],
                 ),
         ),
