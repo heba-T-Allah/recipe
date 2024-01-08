@@ -79,6 +79,7 @@ class _FormSectionSignUpState extends State<FormSectionSignUp> {
               const SizedBox(
                 height: 80,
               ),
+              // if(MediaQuery.viewInsetsOf(context).bottom==0)
               Padding(
                 padding: const EdgeInsets.only(bottom: 20),
                 child: Row(

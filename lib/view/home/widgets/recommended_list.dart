@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-
-import 'package:registration/view/home/widgets/fresh_card_recipe.dart';
 import '../../../model/recipe.dart';
+import 'recommended_card.dart';
 
-import '../../../resources/values_manager.dart';
 
-class FreshRecipeList extends StatelessWidget {
-  const FreshRecipeList({
+class RecommendedRecipeList extends StatelessWidget {
+  const RecommendedRecipeList({
     super.key,
     required this.recipeList,
   });
@@ -16,14 +14,18 @@ class FreshRecipeList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: MediaQuery.of(context).size.height * .3,
+      // height: MediaQuery.of(context).size.height * .4,
       child: ListView.builder(
         itemCount: recipeList.length,
         shrinkWrap: true,
         primary: false,
-        scrollDirection: Axis.horizontal,
+        scrollDirection: Axis.vertical,
         itemBuilder: (BuildContext context, int index) {
-          return FreshCardRecipe(recipe: recipeList[index]);
+          return SizedBox(
+            width: MediaQuery.of(context).size.width,
+            // height: MediaQuery.of(context).size.height * .27,
+            child: RecommendedCard(recipe: recipeList[index]),
+          );
         },
       ),
     );

@@ -8,8 +8,8 @@ import '../../../resources/values_manager.dart';
 import 'my_fav_icon.dart';
 import 'my_rating_bar.dart';
 
-class FreshRecipeCard extends StatelessWidget {
-  const FreshRecipeCard({
+class RecommendedCard extends StatelessWidget {
+  const RecommendedCard({
     super.key,
     required this.recipe,
   });

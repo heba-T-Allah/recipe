@@ -1,5 +1,5 @@
-
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:registration/view/on_boarding/on_boarding_screen.dart';
 import 'package:registration/view/splash/splash_screen.dart';
 
@@ -8,9 +8,8 @@ import '../view/sign_in/signin_screen.dart';
 import '../view/sign_up/signup_screen.dart';
 import 'routes.dart';
 
-
 class AppRouter {
-  Route generateRoute(RouteSettings settings) {
+  PageRoute? generateRoute(RouteSettings settings) {
     final arguments = settings.arguments;
 
     switch (settings.name) {
@@ -27,15 +26,21 @@ class AppRouter {
           builder: (_) => const SignInScreen(),
         );
       case Routes.signUpScreen:
-        return MaterialPageRoute(
-          builder: (_) => const SignUpScreen(),
-        );
+        return PageTransition(
+            child: const SignUpScreen(),
+            type: PageTransitionType.fade,
+            curve: Curves.bounceInOut);
       case Routes.homeScreen:
-        return MaterialPageRoute(
-          builder: (_) => const HomeScreen(),
+        return PageTransition(
+          child: HomeScreen(),
+          type: PageTransitionType.leftToRightWithFade,
+          settings: settings,
         );
+      // MaterialPageRoute(
+      // builder: (_) => const HomeScreen(),
+      // );
       default:
-        return undefinedRoute();
+        return null;
     }
   }
 
