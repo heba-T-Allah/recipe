@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:registration/resources/constants_manager.dart';
 import 'package:registration/resources/strings_manager.dart';
-import 'package:registration/resources/text_style.dart';
-import 'package:registration/resources/values_manager.dart';
-import 'package:registration/services/preferences.service.dart';
+
+import 'package:registration/utils/navigation.dart';
+import 'package:registration/view/home/home_screen.dart';
+import 'package:registration/view/on_boarding/on_boarding_screen.dart';
 import 'package:registration/view/splash/widgets/splash_logo_and_title.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../../resources/assets_manager.dart';
-import '../../routing/routes.dart';
+
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -29,9 +29,13 @@ class _SplashScreenState extends State<SplashScreen> {
 
   _goNext() {
     if (isLoggedIn) {
-      Navigator.pushReplacementNamed(context, Routes.homeScreen);
+      NavigationUtils.pushReplacement(context: context, page: HomeScreen());
+      // Navigator.pushReplacementNamed(context, Routes.homeScreen);
     } else {
-      Navigator.pushReplacementNamed(context, Routes.onBoardingScreen);
+      NavigationUtils.pushReplacement(
+          context: context, page: const OnBoardingScreen());
+
+      // Navigator.pushReplacementNamed(context, Routes.onBoardingScreen);
     }
   }
 

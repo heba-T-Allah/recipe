@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:registration/resources/strings_manager.dart';
+import 'package:registration/view/sign_up/signup_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../resources/text_style.dart';
-import '../../routing/routes.dart';
-import '../../services/preferences.service.dart';
+
+import '../../utils/navigation.dart';
+import '../home/home_screen.dart';
 import '../widgets/costom_text_form_field.dart';
 import '../widgets/text_button_widget.dart';
 
@@ -94,8 +96,11 @@ class _FormSectionSignInState extends State<FormSectionSignIn> {
                             .copyWith(height: 1.5)),
                     GestureDetector(
                       onTap: () {
-                        Navigator.pushReplacementNamed(
-                            context, Routes.signUpScreen);
+                        NavigationUtils.pushReplacement(
+                            context: context, page: SignUpScreen());
+
+                        // Navigator.pushReplacementNamed(
+                        //     context, Routes.signUpScreen);
                       },
                       child: Text(AppStrings.registerDot,
                           style: TextStyles.textStyleRegular16Orange
@@ -111,15 +116,19 @@ class _FormSectionSignInState extends State<FormSectionSignIn> {
 
   Future<void> _login(String email, String password) async {
     GetIt.I.get<SharedPreferences>().setString(AppStrings.emailPref, email);
-    GetIt.I.get<SharedPreferences>().setString(AppStrings.passwordPref, password);
-    GetIt.I.get<SharedPreferences>().setBool(AppStrings.isLoggedInPref,true);
+    GetIt.I
+        .get<SharedPreferences>()
+        .setString(AppStrings.passwordPref, password);
+    GetIt.I.get<SharedPreferences>().setBool(AppStrings.isLoggedInPref, true);
     // print(PreferencesService.retrieveStringValue(AppStrings.emailPref));
     // print(
     //     " isloggedin in func ${await PreferencesService.retrieveBoolValueIsLoggedIn()}");
 
     print("login Successfully.");
     _clearFields();
-    Navigator.pushReplacementNamed(context, Routes.homeScreen);
+    NavigationUtils.pushReplacement(context: context, page: HomeScreen());
+
+    // Navigator.pushReplacementNamed(context, Routes.homeScreen);
   }
 
   void _clearFields() {

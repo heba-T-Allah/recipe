@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:registration/resources/strings_manager.dart';
 import 'package:registration/resources/text_style.dart';
 import 'package:registration/resources/values_manager.dart';
-import '../../resources/color_manager.dart';
-import '../../routing/routes.dart';
+import 'package:registration/view/sign_in/signin_screen.dart';
+import 'package:registration/view/sign_up/signup_screen.dart';
+import '../../utils/navigation.dart';
 import '../splash/widgets/splash_logo_and_title.dart';
 import '../widgets/text_button_widget.dart';
 
@@ -37,7 +38,9 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
               buttonText: AppStrings.register,
               textStyle: TextStyles.textStyleRegular16White,
               onPressed: () =>
-                  Navigator.pushReplacementNamed(context, Routes.signUpScreen),
+                  NavigationUtils.pushReplacement(context: context,page: const SignUpScreen()),
+
+              // Navigator.pushReplacementNamed(context, Routes.signUpScreen),
             ),
           ),
 
@@ -49,7 +52,9 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
             right: 0,
             child: TextButton(
               onPressed: () {
-                Navigator.pushReplacementNamed(context, Routes.signInScreen);
+                NavigationUtils.pushReplacement(context: context,page: const SignInScreen());
+
+                // Navigator.pushReplacementNamed(context, Routes.signInScreen);
               },
               child: Text(
                 AppStrings.signIn,

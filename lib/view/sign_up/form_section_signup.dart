@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:registration/resources/strings_manager.dart';
+import 'package:registration/view/sign_in/signin_screen.dart';
 
 import '../../resources/text_style.dart';
-import '../../routing/routes.dart';
+import '../../utils/navigation.dart';
 import '../widgets/costom_text_form_field.dart';
 import '../widgets/text_button_widget.dart';
 
@@ -90,8 +91,10 @@ class _FormSectionSignUpState extends State<FormSectionSignUp> {
                             .copyWith(height: 1.5)),
                     GestureDetector(
                       onTap: () {
-                        Navigator.pushReplacementNamed(
-                            context, Routes.signInScreen);
+                        NavigationUtils.pushReplacement(context: context,page: SignInScreen());
+
+                        // Navigator.pushReplacementNamed(
+                        //     context, Routes.signInScreen);
                       },
                       child: Text(AppStrings.signIn,
                           style: TextStyles.textStyleRegular16Orange
