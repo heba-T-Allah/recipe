@@ -64,7 +64,7 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
       ),
-      body: BlocConsumer<RecipeCubit, RecipeState>(
+      body: BlocBuilder<RecipeCubit, RecipeState>(
         builder: (context, state) {
           BlocProvider.of<RecipeCubit>(context).getAdsAndRecipes();
           if (state is RecipeLoading) {
@@ -254,7 +254,7 @@ class HomeScreen extends StatelessWidget {
             );
           }
           // return const Center();
-        }, listener: (BuildContext context, RecipeState state) {  },
+        },
       ),
     );
   }

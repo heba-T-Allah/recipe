@@ -52,7 +52,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
             right: 0,
             child: TextButton(
               onPressed: () {
-                NavigationUtils.pushReplacement(context: context,page:  SignInScreen());
+                NavigationUtils.pushReplacement(context: context,page: const SignInScreen());
 
                 // Navigator.pushReplacementNamed(context, Routes.signInScreen);
               },
