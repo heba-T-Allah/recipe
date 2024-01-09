@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
+import 'package:registration/view/home/logic/cubit/recipe_cubit.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'app/my_app.dart';
 
@@ -16,5 +18,5 @@ void main() async {
     print("can't init preferences ${e} ");
   }
 
-  runApp(MyApp());
+  runApp(BlocProvider(create: (context) => RecipeCubit(), child: MyApp()));
 }

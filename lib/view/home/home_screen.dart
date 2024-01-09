@@ -17,7 +17,7 @@ import '../costom/shared_functions.dart';
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
 
-  CarouselController buttonCarouselController = CarouselController();
+ final CarouselController buttonCarouselController = CarouselController();
   var currentPos = 0;
 
   @override
@@ -64,15 +64,14 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
       ),
-      body: BlocBuilder<RecipeCubit, RecipeState>(
+      body: BlocConsumer<RecipeCubit, RecipeState>(
         builder: (context, state) {
           BlocProvider.of<RecipeCubit>(context).getAdsAndRecipes();
           if (state is RecipeLoading) {
             return const Center(
               child: CircularProgressIndicator(),
             );
-          }
-          else if (state is RecipeSuccess) {
+          } else if (state is RecipeSuccess) {
             return Padding(
               padding: const EdgeInsets.only(
                   top: AppPadding.p8,
@@ -242,19 +241,18 @@ class HomeScreen extends StatelessWidget {
                       ),
               ),
             );
-          }
-          else if (state is RecipeFailure) {
+          } else if (state is RecipeFailure) {
             return const Center(
               child: Text("Something went wrong Please try again"),
             );
-          }
-          else {
+          } else {
             return const Center(
               child: Text("There is no data"),
             );
           }
           // return const Center();
         },
+        listener: (BuildContext context, RecipeState state) {},
       ),
     );
   }
