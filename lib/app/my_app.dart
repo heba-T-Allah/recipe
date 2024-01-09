@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:registration/routing/app-router.dart';
 import 'package:registration/view/home/logic/cubit/recipe_cubit.dart';
+import 'package:registration/view/sign_in/logic/cubit/login_cubit.dart';
 import '../resources/strings_manager.dart';
 import '../routing/routes.dart';
 
@@ -17,8 +18,15 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => RecipeCubit(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<LoginCubit>(
+          create: (BuildContext context) => LoginCubit(),
+        ),
+        BlocProvider<RecipeCubit>(
+          create: (BuildContext context) => RecipeCubit(),
+        ),
+      ],
       child: MaterialApp(
         title: AppStrings.appTitle,
         debugShowCheckedModeBanner: false,

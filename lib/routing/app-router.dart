@@ -23,7 +23,7 @@ class AppRouter {
         );
       case Routes.signInScreen:
         return MaterialPageRoute(
-          builder: (_) => const SignInScreen(),
+          builder: (_) =>  SignInScreen(),
         );
       case Routes.signUpScreen:
         return PageTransition(

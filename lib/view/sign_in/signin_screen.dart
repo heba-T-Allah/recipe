@@ -1,25 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:registration/view/sign_in/form_section_signin.dart';
+import 'package:registration/view/sign_in/widgets/form_section_signin.dart';
 import '../../resources/assets_manager.dart';
 import '../../resources/strings_manager.dart';
 import '../../resources/text_style.dart';
 
-class SignInScreen extends StatefulWidget {
-  const SignInScreen({super.key});
+class SignInScreen extends StatelessWidget {
 
-  @override
-  State<SignInScreen> createState() => _SignInScreenState();
-}
-
-class _SignInScreenState extends State<SignInScreen> {
   bool obsecureText = true;
 
   bool isObsecureText = true;
 
-  @override
-  void initState() {
-    super.initState();
-  }
+  SignInScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +53,7 @@ class _SignInScreenState extends State<SignInScreen> {
                         SizedBox(
                           height:20,
                         ),
-                        const FormSectionSignIn(),
+                         FormSectionSignIn(),
                       ])),
             ],
           ),
