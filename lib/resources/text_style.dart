@@ -55,6 +55,11 @@ class TextStyles {
       fontWeight: FontWeightManager.regular,
       fontFamily: FontConstants.fontFamilyHellix,
       color: ColorManager.textBlack);
+  static TextStyle textStyleRegular26Black = TextStyle(
+      fontSize: FontSize.s26,
+      fontWeight: FontWeightManager.regular,
+      fontFamily: FontConstants.fontFamilyHellix,
+      color: ColorManager.textBlack);
   static TextStyle textStyleMedium14Orange = TextStyle(
       fontSize: FontSize.s14,
       fontWeight: FontWeightManager.medium,
