@@ -30,4 +30,21 @@ class AppStrings {
   static const todayFresh = "Today\'s Fresh Recipes";
   static const seeAll = "See All";
   static const recommended = "Recommended";
+
+
+  static const somethingWentWrong = "Something went wrong Please try again";
+  static const thereIsNoData = "There is no data";
+//drawer
+  static const viewProfile =  "View Profile";
+
+  static const home ="Home";
+  static const favorites = "Favorites";
+  static const recentlyViewed = "RecentlyViewed";
+  static const setting = "Setting";
+  static const aboutUs = "About Us";
+  static const help = "Help";
+  static const signOut = "Sign Out";
+
+
+
 }

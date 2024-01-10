@@ -52,22 +52,22 @@ class _MyDrawerItemState extends State<MyDrawerItem> {
         return NavigationUtils.pushReplacement(
             context: context, page: FavoriteScreen());
       case 2:
-        return NavigationUtils.pushReplacement(
+        return NavigationUtils.pushAndRemoveUntil(
             context: context, page: RecentlyViewedScreen());
       case 3:
-        return NavigationUtils.pushReplacement(
+        return NavigationUtils.pushAndRemoveUntil(
             context: context, page: SettingScreen());
       case 4:
-        return NavigationUtils.pushReplacement(
+        return NavigationUtils.pushAndRemoveUntil(
             context: context, page: AboutScreen());
       case 5:
-        return NavigationUtils.pushReplacement(
+        return NavigationUtils.pushAndRemoveUntil(
             context: context, page: HelpScreen());
       case 6:
         final sharedFunctions = SharedFunctions(context: context);
         return sharedFunctions.logoutUser();
       default:
-        return NavigationUtils.pushReplacement(
+        return NavigationUtils.pushAndRemoveUntil(
             context: context, page: HomeScreen());
     }
   }
@@ -82,8 +82,6 @@ class _MyDrawerItemState extends State<MyDrawerItem> {
         // Update the state of the app
         onItemTapped(widget.index);
         print(widget.selectedIndex);
-        // setState(() {});
-        // Then close the drawer
         // Navigator.pop(context);
       },
     );

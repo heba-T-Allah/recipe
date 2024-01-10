@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:registration/resources/strings_manager.dart';
 
 import '../../resources/text_style.dart';
 import '../../resources/values_manager.dart';
@@ -30,7 +31,8 @@ class RecentlyViewedScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text("RecentlyViewed", style: TextStyles.textStyleRegular26Black),
+              Text(AppStrings.recentlyViewed,
+                  style: TextStyles.textStyleRegular26Black),
               const SizedBox(
                 height: AppSize.s10,
               ),
@@ -49,11 +51,11 @@ class RecentlyViewedScreen extends StatelessWidget {
                       recipeList: state.recentlyViewedList);
                 } else if (state is RecentlyViewedFailure) {
                   return const Center(
-                    child: Text("Something went wrong Please try again"),
+                    child: Text(AppStrings.somethingWentWrong),
                   );
                 } else {
                   return const Center(
-                    child: Text("There is no data"),
+                    child: Text(AppStrings.thereIsNoData),
                   );
                 }
               }),

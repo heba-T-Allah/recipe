@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../resources/strings_manager.dart';
 import '../../resources/text_style.dart';
 
 class MyDrawerHeader extends StatelessWidget {
@@ -11,7 +12,6 @@ class MyDrawerHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return DrawerHeader(
       decoration: BoxDecoration(
-        // border:
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -34,7 +34,7 @@ class MyDrawerHeader extends StatelessWidget {
               ),
               // SizedBox(height: 20),
               Text(
-                "View Profile",
+                AppStrings.viewProfile,
                 style: TextStyles.textStyleRegular10Grey,
               )
             ],

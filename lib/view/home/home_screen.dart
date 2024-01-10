@@ -99,11 +99,11 @@ class _HomeScreenState extends State<HomeScreen> {
           );
         } else if (state is RecipeFailure) {
           return const Center(
-            child: Text("Something went wrong Please try again"),
+            child: Text(AppStrings.somethingWentWrong),
           );
         } else {
           return const Center(
-            child: Text("There is no data"),
+            child: Text(AppStrings.thereIsNoData),
           );
         }
       }),

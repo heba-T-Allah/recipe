@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:registration/view/home/home_screen.dart';
-
-import '../../utils/navigation.dart';
-import '../costom/shared_functions.dart';
+import 'package:registration/resources/strings_manager.dart';
 import 'my_drawer_header.dart';
 import 'my_drawer_item.dart';
 
@@ -18,11 +15,6 @@ class MyDrawer extends StatefulWidget {
 class _MyDrawerState extends State<MyDrawer> {
   int selectedIndex = 0;
 
-  // onItemTapped(int index) {
-  //   setState(() {
-  //     selectedIndex = index;
-  //   });
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -37,43 +29,43 @@ class _MyDrawerState extends State<MyDrawer> {
               selectedIndex: selectedIndex,
               icon: Icons.home,
               index: 0,
-              title: 'Home',
+              title: AppStrings.home,
             ),
             MyDrawerItem(
               selectedIndex: selectedIndex,
               icon: Icons.favorite_border,
               index: 1,
-              title: 'Favorites',
+              title: AppStrings.favorites,
             ),
             MyDrawerItem(
               selectedIndex: selectedIndex,
               icon: Icons.play_arrow_outlined,
               index: 2,
-              title: 'Recently Viewed',
+              title: AppStrings.recentlyViewed,
             ),
             MyDrawerItem(
               selectedIndex: selectedIndex,
               icon: Icons.settings,
               index: 3,
-              title: 'Settings',
+              title: AppStrings.setting,
             ),
             MyDrawerItem(
               selectedIndex: selectedIndex,
               icon: Icons.info_outline_rounded,
               index: 4,
-              title: "About Us",
+              title: AppStrings.aboutUs,
             ),
             MyDrawerItem(
               selectedIndex: selectedIndex,
               icon: Icons.help,
               index: 5,
-              title: 'Help',
+              title: AppStrings.help,
             ),
             MyDrawerItem(
               selectedIndex: selectedIndex,
               icon: Icons.logout,
               index: 6,
-              title: 'Sign Out',
+              title: AppStrings.signOut,
             ),
           ],
         ),

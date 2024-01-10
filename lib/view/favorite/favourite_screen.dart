@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:registration/resources/strings_manager.dart';
 import 'package:registration/view/favorite/logic/cubit/favorite_cubit.dart';
 import '../../resources/text_style.dart';
 import '../../resources/values_manager.dart';
@@ -29,7 +30,7 @@ class FavoriteScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text("Favorites", style: TextStyles.textStyleRegular26Black),
+              Text(AppStrings.favorites, style: TextStyles.textStyleRegular26Black),
               const SizedBox(
                 height: AppSize.s10,
               ),
@@ -47,11 +48,11 @@ class FavoriteScreen extends StatelessWidget {
                   return RecommendedRecipeList(recipeList: state.favoriteList);
                 } else if (state is FavoriteFailure) {
                   return const Center(
-                    child: Text("Something went wrong Please try again"),
+                    child: Text(AppStrings.somethingWentWrong),
                   );
                 } else {
                   return const Center(
-                    child: Text("There is no data"),
+                    child: Text(AppStrings.thereIsNoData),
                   );
                 }
               }),
