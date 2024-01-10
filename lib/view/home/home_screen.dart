@@ -12,28 +12,60 @@ import '../../resources/assets_manager.dart';
 import '../../resources/strings_manager.dart';
 import '../../resources/text_style.dart';
 import '../../resources/values_manager.dart';
-import '../costom/shared_functions.dart';
+import '../drawer/my_drawer.dart';
 
-class HomeScreen extends StatelessWidget {
+
+class HomeScreen extends StatefulWidget {
   HomeScreen({super.key});
 
- final CarouselController buttonCarouselController = CarouselController();
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  final CarouselController buttonCarouselController = CarouselController();
+
   var currentPos = 0;
+
+  void showScreenFunc(BuildContext context) async {
+    BlocProvider.of<RecipeCubit>(context).getAdsAndRecipes();
+
+    await Future.delayed(const Duration(milliseconds: 500));
+  }
+
+  @override
+  void initState() {
+    showScreenFunc(context);
+    super.initState();
+  }
+
+  var scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
-    final sharedFunctions = SharedFunctions(context: context);
 
     return Scaffold(
+      key: scaffoldKey,
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
-        leading: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: AppSize.s20),
-          child: Image.asset(
+        leading: IconButton(
+          onPressed: () {
+            if (scaffoldKey.currentState!.isDrawerOpen) {
+              scaffoldKey.currentState!.closeDrawer();
+              //close drawer, if drawer is open
+            } else {
+              scaffoldKey.currentState!.openDrawer();
+              //open drawer, if drawer is closed
+            }
+          },
+          icon: Image.asset(
             ImageAssets.menuIcon,
             color: Colors.black,
+            fit: BoxFit.cover,
+            width: 15,
+            height: 15,
           ),
         ),
         actions: [
@@ -49,24 +81,10 @@ class HomeScreen extends StatelessWidget {
           )
         ],
       ),
-      bottomNavigationBar: Padding(
-        padding: const EdgeInsets.symmetric(
-            horizontal: AppConstants.horizontalPadding),
-        child: ElevatedButton(
-          style: const ButtonStyle(
-              backgroundColor: MaterialStatePropertyAll(Colors.red)),
-          onPressed: () {
-            sharedFunctions.logoutUser();
-          },
-          child: Text(
-            AppStrings.logOut,
-            style: TextStyles.textStyleRegular16White,
-          ),
-        ),
-      ),
+
+      drawer: MyDrawer(),
       body: BlocConsumer<RecipeCubit, RecipeState>(
         builder: (context, state) {
-          BlocProvider.of<RecipeCubit>(context).getAdsAndRecipes();
           if (state is RecipeLoading) {
             return const Center(
               child: CircularProgressIndicator(),

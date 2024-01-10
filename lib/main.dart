@@ -18,5 +18,5 @@ void main() async {
     print("can't init preferences ${e} ");
   }
 
-  runApp(BlocProvider(create: (context) => RecipeCubit(), child: MyApp()));
+  runApp( MyApp());
 }

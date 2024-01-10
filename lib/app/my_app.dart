@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:registration/routing/app-router.dart';
 import '../resources/strings_manager.dart';
 import '../routing/routes.dart';
+import '../view/home/logic/cubit/recipe_cubit.dart';
 
 class MyApp extends StatefulWidget {
   MyApp({super.key});
@@ -15,7 +17,7 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return  MaterialApp(
+    return  BlocProvider(create: (context) => RecipeCubit(), child:MaterialApp(
         title: AppStrings.appTitle,
         debugShowCheckedModeBanner: false,
         // theme: ThemeData(
@@ -32,6 +34,6 @@ class _MyAppState extends State<MyApp> {
         initialRoute: Routes.splashScreen,
         onGenerateRoute: appRouter.generateRoute,
 
-    );
+    ) );
   }
 }
