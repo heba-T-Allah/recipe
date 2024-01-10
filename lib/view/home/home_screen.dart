@@ -12,7 +12,6 @@ import '../../resources/assets_manager.dart';
 import '../../resources/strings_manager.dart';
 import '../../resources/text_style.dart';
 import '../../resources/values_manager.dart';
-import '../drawer/my_drawer.dart';
 
 
 class HomeScreen extends StatefulWidget {
@@ -82,7 +81,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
 
-      drawer: MyDrawer(),
+
       body: BlocConsumer<RecipeCubit, RecipeState>(
         builder: (context, state) {
           if (state is RecipeLoading) {
@@ -178,7 +177,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   onPageChanged: (index, _) {
                                     currentPos = index;
 
-                                    // setState(() {});
+                                    setState(() {});
                                   },
                                   autoPlayAnimationDuration: const Duration(
                                       milliseconds:
@@ -226,7 +225,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           Center(
                             child: DotsIndicator(
                               onTap: (position) async {
-                                // setState(() => currentPos = position);
+                                setState(() => currentPos = position);
 
                                 await buttonCarouselController
                                     .animateToPage(currentPos);
@@ -268,9 +267,10 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Text("There is no data"),
             );
           }
-          // return const Center();
         },
-        listener: (BuildContext context, RecipeState state) {},
+        listener: (BuildContext context, RecipeState state) {
+
+        },
       ),
     );
   }
