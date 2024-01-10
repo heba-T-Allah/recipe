@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:registration/routing/app-router.dart';
 import 'package:registration/view/favorite/logic/cubit/favorite_cubit.dart';
+import 'package:registration/view/recently_viewed/logic/cubit/recently_viewed_cubit.dart';
 import 'package:registration/view/sign_in/logic/cubit/login_cubit.dart';
 import '../resources/strings_manager.dart';
 import '../routing/routes.dart';
@@ -29,6 +30,9 @@ class _MyAppState extends State<MyApp> {
           ),
           BlocProvider<FavoriteCubit>(
             create: (BuildContext context) => FavoriteCubit(),
+          ),
+          BlocProvider<RecentlyViewedCubit>(
+            create: (BuildContext context) => RecentlyViewedCubit(),
           ),
         ],
         child: MaterialApp(
